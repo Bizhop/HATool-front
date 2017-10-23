@@ -14,7 +14,7 @@ const DashContainer = props => (
     <h1>Etusivu</h1>
     {!props.loggedIn && (
       <GoogleLogin
-        clientId="658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com"
+        clientId="107543052765-lfgp4lke6h51a0l4kp258anilpeegf8v.apps.googleusercontent.com"
         buttonText="Kirjaudu sisään"
         className="btn btn-danger"
         onSuccess={props.login}
