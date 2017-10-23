@@ -12,6 +12,7 @@ const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
   template: './public/index.html',
   filename: 'index.html',
   inject: 'body',
+  favicon: './public/favicon.ico',
 })
 
 const CleanWebpackPluginConfig = new CleanWebpackPlugin(['dist'], {})
@@ -69,7 +70,7 @@ module.exports = {
       },
     ],
   },
-  plugins: [HtmlWebpackPluginConfig, CleanWebpackPluginConfig],
+  plugins: [HtmlWebpackPluginConfig, extractSass, CleanWebpackPluginConfig],
   devServer: {
     // If you use Vagrant or Cloud9, set
     // host: '0.0.0.0';

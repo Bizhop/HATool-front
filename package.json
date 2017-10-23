@@ -7,7 +7,9 @@
     "start": "webpack-dev-server --hot --inline",
     "build": "webpack",
     "lint": "eslint src --ext js --ext .jsx",
-    "format": "prettier --print-width 100 --no-semi --single-quote true --trailing-comma all --write 'src/**/*.js'"
+    "format":
+      "prettier --print-width 100 --no-semi --single-quote true --trailing-comma all --write 'src/**/*.js'",
+    "postinstall": "webpack"
   },
   "dependencies": {
     "axios": "0.16.2",
