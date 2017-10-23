@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { LineChart, Line, XAxis, YAxis, CartesianGrid } from 'recharts'
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Legend } from 'recharts'
 import R from 'ramda'
 import { Redirect } from 'react-router-dom'
 
@@ -14,6 +14,8 @@ const CustomLabel = ({ x, y, stroke, value }) => (
     {value}
   </text>
 )
+
+const colors = ['red', 'green', 'blue', 'yellow', 'black', 'grey', 'magenta', 'cyan']
 
 const RenderCheckboxes = props => (
   <div className="row">
@@ -53,7 +55,8 @@ const ChartContainer = props => (
     />
     {props.player && (
       <div>
-        <h1>{props.player.name}</h1>
+        <h1>{`${props.player.status} ${props.player.position} ${props.player.name} (${props.player
+          .quality}/${props.player.potential})`}</h1>
         <LineChart
           width={1024}
           height={600}
@@ -62,14 +65,16 @@ const ChartContainer = props => (
           <XAxis dataKey="createdAt" />
           <YAxis />
           <CartesianGrid strokeDasharray="3 3" />
+          <Legend />
           {props.filters &&
-            props.filters.map(f => (
+            props.filters.map((f, idx) => (
               <Line
                 key={f}
                 type="monotone"
                 dataKey={f}
                 label={<CustomLabel />}
                 isAnimationActive={false}
+                stroke={colors[idx]}
               />
             ))}
         </LineChart>
