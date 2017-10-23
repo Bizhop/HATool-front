@@ -34,6 +34,11 @@ const PlayerContainer = props => (
     {props.player &&
       !props.fetching && (
         <div className="container">
+          {!props.player.active && (
+            <div className="row">
+              <div className="col-md-12 text-danger">Pelaaja ei ole enää joukkueessa!</div>
+            </div>
+          )}
           <div className="row">
             <div className="col-md-2">Nimi</div>
             <div className="col-md-10">{props.player.name}</div>
