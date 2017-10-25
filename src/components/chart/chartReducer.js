@@ -16,9 +16,7 @@ const initialState = {
     'abilityIndex',
     'form',
     'experience',
-    'weeks',
     'efficiency',
-    'growthPotential',
   ],
 }
 

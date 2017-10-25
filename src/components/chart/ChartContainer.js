@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Legend } from 'recharts'
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Legend, Tooltip } from 'recharts'
 import R from 'ramda'
 import { Redirect } from 'react-router-dom'
 
@@ -15,7 +15,7 @@ const CustomLabel = ({ x, y, stroke, value }) => (
   </text>
 )
 
-const colors = ['red', 'green', 'blue', 'yellow', 'black', 'grey', 'magenta', 'cyan']
+const colors = ['red', 'green', 'blue', 'black', 'grey', 'violet', 'orange', 'brown']
 
 const fi = {
   goalie: 'MV',
@@ -29,9 +29,7 @@ const fi = {
   abilityIndex: 'TI',
   form: 'Kun',
   experience: 'Kok',
-  weeks: 'Viikot',
   efficiency: 'Teho',
-  growthPotential: 'Kasvunvara',
 }
 
 const RenderCheckboxes = props => (
@@ -81,6 +79,7 @@ const ChartContainer = props => (
           <YAxis />
           <CartesianGrid strokeDasharray="3 3" />
           <Legend />
+          <Tooltip />
           {props.filters &&
             props.filters.map((f, idx) => (
               <Line
