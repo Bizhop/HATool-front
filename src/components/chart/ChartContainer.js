@@ -17,20 +17,35 @@ const CustomLabel = ({ x, y, stroke, value }) => (
 
 const colors = ['red', 'green', 'blue', 'yellow', 'black', 'grey', 'magenta', 'cyan']
 
+const fi = {
+  goalie: 'MV',
+  defence: 'Puo',
+  attack: 'Hyö',
+  shooting: 'Lau',
+  passing: 'Syö',
+  speed: 'Nop',
+  strength: 'Voi',
+  selfControl: 'Ihi',
+  abilityIndex: 'TI',
+  form: 'Kun',
+  experience: 'Kok',
+  weeks: 'Viikot',
+  efficiency: 'Teho',
+  growthPotential: 'Kasvunvara',
+}
+
 const RenderCheckboxes = props => (
-  <div className="row">
-    <div className="col-md-12">
-      {props.checkboxes &&
-        props.checkboxes.map(c => (
-          <RenderCheckbox
-            key={c}
-            name={c}
-            toggleFilter={props.toggleFilter}
-            filters={props.filters}
-          />
-        ))}
-    </div>
-  </div>
+  <form>
+    {props.checkboxes &&
+      props.checkboxes.map(c => (
+        <RenderCheckbox
+          key={c}
+          name={c}
+          toggleFilter={props.toggleFilter}
+          filters={props.filters}
+        />
+      ))}
+  </form>
 )
 
 const RenderCheckbox = props => (
@@ -41,7 +56,7 @@ const RenderCheckbox = props => (
       onChange={() => props.toggleFilter(props.name)}
       checked={R.contains(props.name, props.filters)}
     />{' '}
-    {props.name}
+    {R.propOr('', props.name, fi)}
   </label>
 )
 
@@ -72,6 +87,7 @@ const ChartContainer = props => (
                 key={f}
                 type="monotone"
                 dataKey={f}
+                name={R.propOr('', f, fi)}
                 label={<CustomLabel />}
                 isAnimationActive={false}
                 stroke={colors[idx]}
